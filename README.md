@@ -10,22 +10,19 @@ If you use this tool in your publication, please cite this repository. Thanks!
 ## Resources used
 gtf/gff files used from NCBI RefSeq: 
 
-GRCh37: 
+GRCh37 (Latest modified: 2022-03-12 12:43):
 - https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.gtf.gz
-- https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.gff.gz (Latest modified: 2022-03-12 12:43)
+- https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh37_latest/refseq_identifiers/GRCh37_latest_genomic.gff.gz
 
-GRCh38:
+GRCh38 (Latest modified: 2022-04-12 08:00):
 - https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_genomic.gtf.gz
-- https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_genomic.gff.gz (Latest modified: 2022-04-12 08:00)
+- https://ftp.ncbi.nlm.nih.gov/refseq/H_sapiens/annotation/GRCh38_latest/refseq_identifiers/GRCh38_latest_genomic.gff.gz
 
 ---
 ## Dependencies
 Bash: tabix
-Python package: Matplotlib
 
----
-## Description
-Python was used to develop this tool.
+Python package: Matplotlib
 
 ---
 ## Help page
