@@ -62,3 +62,8 @@ For example:
 python3 AnnotateGene.py -gr chr2:179390716-179672150
 ```
 ![Example](./Example/PlotGene.png)
+
+---
+## Author
+Yao LEI (Leo), M.Sc. <br>
+PhD student, Department of Paediatrics and Adolescent Medicine, The University of Hong Kong.
