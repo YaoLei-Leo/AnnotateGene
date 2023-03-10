@@ -3,14 +3,16 @@ import argparse
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import matplotlib.patches as patches
+from pathlib import Path
 from Module import PlotGene, AnnotateMutation
 
 def main(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, Mutation, MutationFile, Output):
+    ScriptDir = Path( __file__ ).parent.absolute()
     ## Parse arguments to parameters
     Chr=GenomicRegion.split(':')[0]
     PosRange=GenomicRegion.split(":")[1]
     
-    ax = PlotGene.PlotGene(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch)
+    ax = PlotGene.PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch)
     # ax = AnnotateMutation.AnnotateSNVMutation(ax, 179623894, "NP_001254479.2:p.(Lys3374*)", "Red")
     if Mutation:
         if Mutation.split(",")[0]=="SNV":

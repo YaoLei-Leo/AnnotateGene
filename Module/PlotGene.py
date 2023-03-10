@@ -6,9 +6,9 @@ import matplotlib.ticker as ticker
 import matplotlib.patches as patches
 
 ## Functions
-def ChrToRefSeqAccn(InputChr): ### Convert the "Chr2" to RefSeq accession number.
+def ChrToRefSeqAccn(ScriptDir, InputChr): ### Convert the "Chr2" to RefSeq accession number.
     s=0
-    with open("./ResourceFile/GRCh37_latest_assembly_report.txt") as f:
+    with open("{}/ResourceFile/GRCh37_latest_assembly_report.txt".format(ScriptDir)) as f:
         for line1 in f:
             if not line1.startswith('#'):
                 list1 = line1.split()
@@ -51,14 +51,14 @@ def TestRangeOverlapWithRangeList(InputRange, RangeList):
     if n==0:
         return False
 
-def PlotGene(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch):
+def PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch):
     ### 1.Parse arguments to parameters
-    RefSeqGenomicGtf="./ResourceFile/{}_latest_genomic.sorted.gtf.gz".format(GenomeAssembly)
+    RefSeqGenomicGtf="{}/ResourceFile/{}_latest_genomic.sorted.gtf.gz".format(ScriptDir, GenomeAssembly)
     Chr=GenomicRegion.split(':')[0]
     PosRange=GenomicRegion.split(":")[1]
     
     ### 2.Extract the enquired region.
-    bashCommand = "tabix {} {}".format(RefSeqGenomicGtf, "{}:{}".format(ChrToRefSeqAccn(Chr), PosRange))
+    bashCommand = "tabix {} {}".format(RefSeqGenomicGtf, "{}:{}".format(ChrToRefSeqAccn(ScriptDir, Chr), PosRange))
     # print(bashCommand)
     EnquiredDf=pd.DataFrame(columns=['seqname', 'source', 'feature', 'start', 'end', 'score', 'strand', 'frame', 'attribute'])
     a = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
