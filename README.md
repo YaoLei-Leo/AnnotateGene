@@ -43,7 +43,7 @@ optional arguments:
   -o, --Output          The output image, default is "./PlotGene.png".
   -m, --Mutation        The mutation user want to annotate into the figure. 
                         Input is "mutation type,position,label,color".
-                        Recommend use quotation mark incase label contains strange symbol.
+                        Recommend use quotation mark in case of strange symbol(s) in the label.
                         (1) SNV example:
                         "SNV,179623894,NP_001254479.2:p.(Lys3374*),Red"
                         (2) CNV example:
