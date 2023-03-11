@@ -61,7 +61,7 @@ For example:
 ```bash
 python3 AnnotateGene.py -gr chr2:179390716-179672150
 ```
-![Example](./Example/PlotGene.png)
+![Example](./Example/Example1_AnnotateGene.png)
 
 ---
 ## Author

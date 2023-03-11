@@ -2,9 +2,11 @@
 import matplotlib.patches as patches
 
 # Functions
-def AnnotateSNVMutation(Axes, Position, Label, Color):
-    Axes.vlines(Position, Axes.get_ylim()[0], -0.5, color=Color, alpha=0.5)
-    Axes.text(Position, -0.5, s=Label, ha='center', fontsize="large", color=Color)
+def AnnotateSNVMutation(Axes, Position, Label, LabelY, Color):
+    # print(Axes.get_ylim())
+    # print(round(Axes.get_ylim()[0]))
+    Axes.vlines(Position, round(Axes.get_ylim()[0]), -0.5, color=Color, linewidth=0.3, linestyles="solid", alpha=1)
+    Axes.text(Position, LabelY, s=Label, ha='left', fontsize=6, color=Color)
     
     return Axes
 

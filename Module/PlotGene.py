@@ -134,7 +134,7 @@ def PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInc
             if Feature=="transcript":
                 # print(1)
                 ax.hlines(y, Start, End, linestyles='solid', colors=Color.split(",")[0], zorder=1)
-                ax.text(Start, y+0.15, s=name, ha='right', color=Color.split(",")[3], fontweight='semibold')
+                ax.text(Start, y+0.15, s=name, ha='right', color=Color.split(",")[3], fontsize=6)
             elif Feature=="exon":
                 ExonRectangle = patches.Rectangle((Start, y-0.125), End-Start, height=0.25, facecolor=Color.split(",")[1], zorder=2)
                 ax.add_patch(ExonRectangle)
