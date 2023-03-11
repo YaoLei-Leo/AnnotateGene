@@ -40,7 +40,7 @@ optional arguments:
   -fs, --Figsize width,height
                         The size of figure use want to output. Default is "16,4".
   -dpi, --DotPerInch    The dpi of the figure. default is 100.
-  -o, --Output          The output image, default is "./PlotGene.png".
+  -o, --Output          The output image, default is "./AnnotateGene.png".
   -m, --Mutation        The mutation user want to annotate into the figure. 
                         Input is "mutation type,position,label,color".
                         Recommend use quotation mark in case of strange symbol(s) in the label.
