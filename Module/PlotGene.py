@@ -51,7 +51,7 @@ def TestRangeOverlapWithRangeList(InputRange, RangeList):
     if n==0:
         return False
 
-def PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch):
+def PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, InvertXaxis):
     ### 1.Parse arguments to parameters
     RefSeqGenomicGtf="{}/ResourceFile/{}_latest_genomic.sorted.gtf.gz".format(ScriptDir, GenomeAssembly)
     Chr=GenomicRegion.split(':')[0]
@@ -134,7 +134,10 @@ def PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInc
             if Feature=="transcript":
                 # print(1)
                 ax.hlines(y, Start, End, linestyles='solid', colors=Color.split(",")[0], zorder=1)
-                ax.text(Start, y+0.15, s=name, ha='right', color=Color.split(",")[3], fontsize=6)
+                if InvertXaxis==True:
+                    ax.text(End, y+0.15, s=name, ha='right', color=Color.split(",")[3], fontsize=6)
+                else:
+                    ax.text(Start, y+0.15, s=name, ha='right', color=Color.split(",")[3], fontsize=6)
             elif Feature=="exon":
                 ExonRectangle = patches.Rectangle((Start, y-0.125), End-Start, height=0.25, facecolor=Color.split(",")[1], zorder=2)
                 ax.add_patch(ExonRectangle)

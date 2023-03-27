@@ -6,13 +6,13 @@ import matplotlib.patches as patches
 from pathlib import Path
 from Module import PlotGene, AnnotateMutation
 
-def main(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, Mutation, MutationFile, Output):
+def main(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, Mutation, MutationFile, InvertXaxis, Output):
     ScriptDir = Path( __file__ ).parent.absolute()
     ## Parse arguments to parameters
     Chr=GenomicRegion.split(':')[0]
     PosRange=GenomicRegion.split(":")[1]
     
-    ax = PlotGene.PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch)
+    ax = PlotGene.PlotGene(ScriptDir, GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, InvertXaxis)
     # ax = AnnotateMutation.AnnotateSNVMutation(ax, 179623894, "NP_001254479.2:p.(Lys3374*)", "Red")
     if Mutation:
         if Mutation.split(",")[0]=="SNV":
@@ -35,7 +35,9 @@ def main(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, Mutation, Mu
                     ax = AnnotateMutation.AnnotateCNVMutation(ax, int(list1[1]), int(list1[2]), list1[3], list1[4])
                     # print(list1)
                 y+=0.1
-    
+
+    if InvertXaxis==True: ### Invert x axis.
+        ax.invert_xaxis()
     ax.ticklabel_format(useOffset=False, style='plain') ## Fort axis tick label to not use scientific notaion
     tick_spacing = round((int(PosRange.split("-")[1])-int(PosRange.split("-")[0]))/30, -3) ### Add tick density, round to nearest 1000
     ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing)) ### Add tick density
@@ -45,7 +47,7 @@ def main(GenomeAssembly, GenomicRegion, Color, Figsize, DotPerInch, Mutation, Mu
     plt.xticks(rotation = 45, fontsize=6) ### Rotate tick angle
     plt.tight_layout() ### tight_layout automatically adjusts subplot params so that the subplot(s) fits in to the figure area. 
     
-    plt.savefig(Output, bbox_inches='tight', transparent=True)
+    plt.savefig(Output, format=Output.split(".")[-1], bbox_inches='tight', transparent=True) ### Save figure.
     
 if __name__=="__main__":
     parser = argparse.ArgumentParser(description="")
@@ -54,8 +56,9 @@ if __name__=="__main__":
     parser.add_argument('-c', '--Color', metavar="", type=str, required=False, default="#003c4b,#be5629,#056faf,#003c4b", help='The color of intron, UTR, exon, and transcript name, respectively. Default is "#003c4b,#be5629,#056faf,#003c4b". Hexadecimal color codes are supported.')
     parser.add_argument('-fs', '--Figsize', metavar="width,height", type=str, required=False, default="16,4", help='The size of figure use want to output. Default is "16,4".')
     parser.add_argument('-dpi', '--DotPerInch', metavar="", type=int, required=False, default=500, help='The dpi of the figure. default is 500.')
-    parser.add_argument('-o', '--Output', metavar="", type=str, default="./AnnotateGene.png", required=False, help='The output image, default is "./AnnotateGene.png".')
     parser.add_argument('-m', '--Mutation', metavar="", type=str, required=False, help='The mutation user want to annotate into the figure. Input is "mutation type,position,label,color". Recommend use quotation mark here if the label contains strange symbol. (1) SNV example: "SNV,179623894,NP_001254479.2:p.(Lys3374*),Red" (2) CNV example: "CNV,179520894,179529894,1CNdeletion,Green"')
     parser.add_argument('-mf', '--MutationFile', metavar="", type=str, required=False, help='The file that contains mutations user want to annotate into the figure. Each line one mutation. Same format with a single mutation.')
+    parser.add_argument('-ix', '--InvertXaxis', metavar="", type=bool, required=False, default=False, help='Invert the x axis or not. Default is False.')
+    parser.add_argument('-o', '--Output', metavar="", type=str, default="./AnnotateGene.png", required=False, help='The output image and it\'s file format, default is "./AnnotateGene.png". If user want to output svg, please use "-o ./AnnotateGene.svg".')
     args = parser.parse_args()
-    main(args.GenomeAssembly, args.GenomicRegion, args.Color, args.Figsize, args.DotPerInch, args.Mutation, args.MutationFile, args.Output)
+    main(args.GenomeAssembly, args.GenomicRegion, args.Color, args.Figsize, args.DotPerInch, args.Mutation, args.MutationFile, args.InvertXaxis, args.Output)

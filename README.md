@@ -40,7 +40,6 @@ optional arguments:
   -fs, --Figsize width,height
                         The size of figure use want to output. Default is "16,4".
   -dpi, --DotPerInch    The dpi of the figure. default is 100.
-  -o, --Output          The output image, default is "./AnnotateGene.png".
   -m, --Mutation        The mutation user want to annotate into the figure. 
                         Input is "mutation type,position,label,color".
                         Recommend use quotation mark in case of strange symbol(s) in the label.
@@ -50,20 +49,43 @@ optional arguments:
                         "CNV,179520894,179529894,1CNdeletion,Green"
   -mf, --MutationFile 
                         The file that contains mutations user want to annotate into the figure.
-                        Each line one mutation. Same format with a single mutation
+                        Each line one mutation. Same format with a single mutation.
+  -ix , --InvertXaxis   Invert the x axis or not. Default is False.
+  -o, --Output          The output image and it's file format default is "./AnnotateGene.png". If user want to output svg please use "-o ./AnnotateGene.svg".
 </pre>
 
 ---
 ## Tutorial
+
+### Example 1: Plot the gene.
 There is only 1 compulsory parameter in AnnotateGene: **genome range**. If user want to plot the genes (transctips) only, just input the genomic range. 
 
 For example:
 ```bash
 python3 AnnotateGene.py -gr chr2:179390716-179672150
 ```
-![Example](./Example/Example1_AnnotateGene.png)
+![Example1](./Example/Example1_AnnotateGene.png)
+
+### Example 2: Add mutation annotation to it.
+If user want to add mutation annotation to the figure, just add the parameter **-m** or **-mf**.
+
+For example:
+```bash
+python3 AnnotateGene.py -gr chr2:179390716-179672150 ./Example/Example2_Mutation.txt
+```
+![Example2](./Example/Example2_AnnotateGene.png)
+
+### Example 3: Invert the x axis.
+If user want to invert the x axis, just add the parameter **-ix True**.
+
+For example:
+```bash
+python3 AnnotateGene.py -gr chr2:179390716-179672150 -ix True
+```
+![Example3](./Example/Example3_AnnotateGene.png)
 
 ---
+
 ## Author
 Yao LEI (Leo), M.Sc. <br>
 PhD student, Department of Paediatrics and Adolescent Medicine, The University of Hong Kong.
