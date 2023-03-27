@@ -27,7 +27,7 @@ Python package: Matplotlib
 ---
 ## Help page
 <pre>
-usage: AnnotateGene.py [-h] [-ga GRCh37,GRCh38] -gr chr:start-end [-c] [-fs width,height] [-dpi] [-o] [-m] [-mf]
+usage: AnnotateGene.py [-h] [-ga GRCh37,GRCh38] -gr chr:start-end [-c] [-fs width,height] [-dpi] [-m] [-mf] [-ix] [-o]
 
 optional arguments:
   -h, --help            show this help message and exit
