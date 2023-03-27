@@ -71,7 +71,7 @@ If user want to add mutation annotation to the figure, just add the parameter **
 
 For example:
 ```bash
-python3 AnnotateGene.py -gr chr2:179390716-179672150 ./Example/Example2_Mutation.txt
+python3 AnnotateGene.py -gr chr2:179390716-179672150 -mf ./Example/Example2_Mutation.txt
 ```
 ![Example2](./Example/Example2_AnnotateGene.png)
 
